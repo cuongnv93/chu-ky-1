@@ -1,14 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyDMs8x2K9T2As2IwvOiKW_X69GjGtT4HEA",
-  authDomain: "uwedding-27a5c.firebaseapp.com",
-  projectId: "uwedding-27a5c",
-  storageBucket: "uwedding-27a5c.firebasestorage.app",
-  messagingSenderId: "299160446031",
-  appId: "1:299160446031:web:ab05231eddde351f38b63a",
-  measurementId: "G-HRDLZHL1L5",
-};
-
-const app = firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const db = firebase.firestore();
 
@@ -312,14 +301,19 @@ function saveSignature(userId, userCard, scale) {
 
 //   const signatureDataUrl = exportCanvas.toDataURL("image/png");
 
+//   console.log(22222, signatureDataUrl);
+
 //   try {
 //     // 🔥 Upload ảnh vào Firebase Storage
 //     const userId = generateId();
-//     const fileRef = storage.ref().child(`signatures/${userCard}/${userId}.png`);
+//     // Sử dụng ref từ Firebase Storage (modular SDK)
+//     const fileRef = storage.ref(`signatures/${userCard}/${userId}.png`);
+//     console.log(22222, fileRef);
 
 //     await fileRef.putString(signatureDataUrl, "data_url");
+//     console.log(333333, downloadURL);
 //     const downloadURL = await fileRef.getDownloadURL();
-
+//     console.log(333333, downloadURL);
 //     // 🔥 Lưu metadata vào Firestore
 //     await db.collection("signatures").doc(userId).set({
 //       idUser: userId,
