@@ -34,7 +34,7 @@
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Philosopher:wght@400;700&family=Paytone+One&display=swap"
         as="style" onload="this.onload = null; this.rel = 'stylesheet';">
-    <link rel="preload" href="./landipagev4.js" as="script">
+    <link rel="preload" href="./ladipagev4.js" as="script">
     <style id="style_ladi" type="text/css">
         a,
         abbr,
@@ -4418,6 +4418,11 @@
                 height: 1587.8px;
             }
 
+
+            #SECTION311 {
+                height: 1587.8px;
+            }
+
             #GROUP172,
             #BOX101 {
                 width: 583px;
@@ -6085,6 +6090,10 @@
                 height: 1273.78px;
             }
 
+            #SECTION311 {
+                height: 1273.78px;
+            }
+
             #GROUP172,
             #BOX101 {
                 width: 416.134px;
@@ -7506,7 +7515,7 @@
                 </div>
             </div>
         </div>
-        <div id="SECTION31" class='ladi-section'>
+        <!-- <div id="SECTION31" class='ladi-section'>
             <div class='ladi-section-background'></div>
             <div class="ladi-container">
                 <div id="GROUP172" class='ladi-element'>
@@ -7663,7 +7672,7 @@
                         nhé!!</div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="SECTION24" class='ladi-section'>
             <div class='ladi-section-background'></div>
             <div class="ladi-container">
@@ -8027,6 +8036,164 @@
                             <h3 class='ladi-headline'>Khánh Huyền</h3>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="SECTION311" class='ladi-section'>
+            <div class='ladi-section-background'></div>
+            <div class="ladi-container">
+                <div id="GROUP172" class='ladi-element'>
+                    <div class='ladi-group'>
+                        <div id="BOX101" class='ladi-element'>
+                            <div class='ladi-box ladi-transition'></div>
+                        </div>
+                        <div id="IMAGE123" class='ladi-element'>
+                            <div class='ladi-image'>
+                                <div class="ladi-image-background"></div>
+                            </div>
+                        </div>
+                        <div id="GROUP173" class='ladi-element'>
+                            <div class='ladi-group'>
+                                <div id="HEADLINE233" class='ladi-element'>
+                                    <h3 class='ladi-headline'>Anh Tuấn<br></h3>
+                                </div>
+                                <div id="HEADLINE234" class='ladi-element'>
+                                    <h3 class='ladi-headline'>Khánh Huyền<br></h3>
+                                </div>
+                                <div id="HEADLINE235" class='ladi-element'>
+                                    <h3 class='ladi-headline'>&amp;<br></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="HTML_CODE11" class='ladi-element'>
+                    <div class='ladi-html-code'>
+                        <link rel="stylesheet" href="./kyTen.css">
+                        <script>
+                            // ?key=
+                            const managerSignatureKey = "test"
+                            const defaultIdUser = "000"
+                            const defaultUserTag = "test"
+                            const sizeSignature = 15
+                            const sizeSignature2 = sizeSignature
+                            const colorSignature = "#6A6A6A"
+                            const sizeImageSignature = 0.3
+                            const libraryURL1 = "https://www.27biggroup.com/librarywedding/kyTen/"
+                        </script>
+
+                        <style>
+                            #previewContainer {
+                                width: 100%;
+                                height: 100%;
+                                /*background-color: rgba(242, 243, 244, 0.5);*/
+                                position: relative;
+                                user-select: none;
+                            }
+                        </style>
+
+
+                        <div id="previewContainer"></div>
+
+                        <div id="deleteDialog" class="hidden">
+                            <p>Bạn có chắc chắn muốn xóa chữ ký này?</p>
+                            <div id="deleteDialog_group_button">
+                                <button id="confirmDelete">Xóa</button>
+                                <button id="cancelDelete">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-action="true" id="BUTTON42" class='ladi-element'>
+                    <div class='ladi-button'>
+                        <div class="ladi-button-background"></div>
+                        <div id="BUTTON_TEXT42" class='ladi-element ladi-button-headline'>
+                            <p class='ladi-headline'>NHẤN ĐỂ KÝ TÊN</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="GROUP174" class='ladi-element'>
+                    <div class='ladi-group'>
+                        <div id="BOX102" class='ladi-element'>
+                            <div class='ladi-box ladi-transition'></div>
+                        </div>
+                        <div id="HEADLINE236" class='ladi-element'>
+                            <h3 class='ladi-headline'>Khu vực ký tên<br></h3>
+                        </div>
+                        <div id="HTML_CODE12" class='ladi-element'>
+                            <div class='ladi-html-code'>
+                                <style>
+                                    #wrapCanvas {
+                                        width: 100%;
+                                        height: 100%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
+                                </style>
+                                <div id="wrapCanvas">
+                                    <canvas id="signatureCanvas" width="400" height="250"
+                                        style="border:1px solid #700000;"></canvas>
+                                </div>
+
+                                <script src="./kyTen.js"></script>
+                                <script src="./readSignature.js"></script>
+
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        loadSignatures(defaultIdUser, defaultUserTag, sizeSignature);
+                                    });
+                                    $(".Signature_BTN_luu").hide()
+                                </script>
+                            </div>
+                        </div>
+
+                        <div id="GROUP175" class='ladi-element'>
+                            <div class='ladi-group'>
+                                <div id="BUTTON43" class='ladi-element Signature_BTN_xoa'>
+                                    <div class='ladi-button'>
+                                        <div class="ladi-button-background"></div>
+                                        <div id="BUTTON_TEXT43" class='ladi-element ladi-button-headline'>
+                                            <p class='ladi-headline'>Xóa</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="BUTTON44" class='ladi-element Signature_BTN_xem'>
+                                    <div class='ladi-button'>
+                                        <div class="ladi-button-background"></div>
+                                        <div id="BUTTON_TEXT44" class='ladi-element ladi-button-headline'>
+                                            <p class='ladi-headline'>Xem thử</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="BUTTON45" class='ladi-element Signature_BTN_luu'>
+                                    <div class='ladi-button'>
+                                        <div class="ladi-button-background"></div>
+                                        <div id="BUTTON_TEXT45" class='ladi-element ladi-button-headline'>
+                                            <p class='ladi-headline'>Lưu Chữ Ký</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="GROUP176" class='ladi-element'>
+                    <div class='ladi-group'>
+                        <div id="BOX103" class='ladi-element'>
+                            <div class='ladi-box ladi-transition'></div>
+                        </div>
+                        <div id="PARAGRAPH124" class='ladi-element'>
+                            <div class='ladi-paragraph'>Lưu Bút</div>
+                        </div>
+                        <div id="PARAGRAPH125" class='ladi-element'>
+                            <div class='ladi-paragraph'>Signature</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="PARAGRAPH126" class='ladi-element'>
+                    <div class='ladi-paragraph'>Để lại chữ ký của Bạn và cùng chúng mình lưu giữ kỷ niệm hạnh phúc này
+                        nhé!!</div>
                 </div>
             </div>
         </div>

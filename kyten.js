@@ -228,106 +228,38 @@ function saveSignature(userId, userCard, scale) {
 
   const signatureData = exportCanvas.toDataURL("image/png");
 
-  fetch(libraryURL + "save_signature.php", {
+  const GOOGLE_SCRIPT_URL_THAM_DU =
+    "https://script.google.com/macros/s/AKfycbwqI2rDyiHiFPCzS2xYz99a-QnrPA_im_fnuMvCmUhwrP0IpG9eyaqVOgpeG94Db3f8Sw/exec";
+
+  const data = {
+    signature: signatureData,
+    idUser: generateId(),
+    userCard: userCard,
+    x: posX,
+    y: posY,
+    formType: "ChuKy",
+  };
+
+  fetch(GOOGLE_SCRIPT_URL_THAM_DU, {
     method: "POST",
-    body: JSON.stringify({
-      signature: signatureData,
-      idUser: userId,
-      userCard: userCard,
-      x: posX,
-      y: posY,
-    }),
-    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
   })
     .then((res) => res.json())
-    .then((result) => {
-      if (result.success) {
-        localStorage.setItem("scrollToPreviewContainer", "#previewContainer");
-        alert("Chữ ký đã được lưu!");
+    .then(() => {
+      localStorage.setItem("scrollToPreviewContainer", "#previewContainer");
+      alert("Chữ ký đã được lưu!");
 
-        setTimeout(() => {
-          loadSignatures(defaultIdUser, defaultUserTag, sizeSignature2);
-          const scrollTarget = localStorage.getItem("scrollToPreviewContainer");
-          document
-            .querySelector(scrollTarget)
-            ?.scrollIntoView({ behavior: "smooth", block: "center" });
-          clearCanvas();
-        }, 500);
-      } else {
-        alert("Lỗi khi lưu: " + result.error);
-      }
+      setTimeout(() => {
+        loadSignatures(defaultIdUser, defaultUserTag, sizeSignature2);
+        const scrollTarget = localStorage.getItem("scrollToPreviewContainer");
+        document
+          .querySelector(scrollTarget)
+          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+        clearCanvas();
+      }, 500);
     })
     .catch((err) => console.error("Lỗi:", err));
 }
-
-// async function saveSignature(userCard, scale) {
-//   const confirmSave = confirm("Bạn có chắc chắn muốn ký và lưu không?");
-//   if (!confirmSave) return;
-
-//   const isEmpty = !ctx
-//     .getImageData(0, 0, canvas.width, canvas.height)
-//     .data.some((v) => v !== 0);
-//   if (isEmpty) {
-//     alert("Vui lòng ký trước khi lưu!");
-//     return;
-//   }
-
-//   if (!hasPreviewed) {
-//     alert('Nhấn vào nút "Xem Thử" trước khi lưu!');
-//     return;
-//   } else {
-//     hasPreviewed = false;
-//   }
-
-//   const signatureImage = document.getElementById("signatureImage");
-//   const container = document.getElementById("previewContainer");
-//   let posX = 0,
-//     posY = 0;
-
-//   if (signatureImage && container) {
-//     const containerRect = container.getBoundingClientRect();
-//     const imageRect = signatureImage.getBoundingClientRect();
-//     posX = ((imageRect.left - containerRect.left) / containerRect.width) * 100;
-//     posY = ((imageRect.top - containerRect.top) / containerRect.height) * 100;
-//   }
-
-//   // Tạo canvas xuất chữ ký
-//   const exportCanvas = document.createElement("canvas");
-//   exportCanvas.width = canvas.width * scale;
-//   exportCanvas.height = canvas.height * scale;
-
-//   const exportCtx = exportCanvas.getContext("2d");
-//   exportCtx.drawImage(canvas, 0, 0, exportCanvas.width, exportCanvas.height);
-
-//   const signatureDataUrl = exportCanvas.toDataURL("image/png");
-
-//   console.log(22222, signatureDataUrl);
-
-//   try {
-//     // 🔥 Upload ảnh vào Firebase Storage
-//     const userId = generateId();
-//     // Sử dụng ref từ Firebase Storage (modular SDK)
-//     const fileRef = storage.ref(`signatures/${userCard}/${userId}.png`);
-//     console.log(22222, fileRef);
-
-//     await fileRef.putString(signatureDataUrl, "data_url");
-//     console.log(333333, downloadURL);
-//     const downloadURL = await fileRef.getDownloadURL();
-//     console.log(333333, downloadURL);
-//     // 🔥 Lưu metadata vào Firestore
-//     await db.collection("signatures").doc(userId).set({
-//       idUser: userId,
-//       userCard: userCard,
-//       x: posX,
-//       y: posY,
-//       imageUrl: downloadURL,
-//       createdAt: new Date().toISOString(),
-//     });
-
-//     alert("✅ Chữ ký đã được lưu vào Firebase!");
-//     clearCanvas();
-//   } catch (err) {
-//     console.error("Lỗi khi lưu Firebase:", err);
-//     alert("❌ Lỗi khi lưu Firebase: " + err.message);
-//   }
-// }
